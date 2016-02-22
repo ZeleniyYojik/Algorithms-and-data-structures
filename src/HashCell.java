@@ -1,6 +1,7 @@
+//Чего делаем то? Идентификатор - value или key? Нужен ли вообще key?
 public class HashCell {
     private int _key;
-    private String _value;
+    private String _value;   //может надо обращаться сразу к корню дерева?
     private BinaryTree _binaryTree;
 
     public void set_key(int _key) {
@@ -30,6 +31,6 @@ public class HashCell {
     public HashCell(int _key, String _value) {
         this._key = _key;
         this._value = _value;
-        _binaryTree=new BinaryTree(new TreeNode(_value));
+        _binaryTree = new BinaryTree(new TreeNode(_value, null));
     }
 }

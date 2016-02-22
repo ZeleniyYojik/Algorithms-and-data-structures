@@ -1,7 +1,5 @@
 public class BinaryTree {
     private TreeNode root;
-    private TreeNode left;
-    private TreeNode right;
 
     public TreeNode getRoot() {
         return root;
@@ -11,24 +9,52 @@ public class BinaryTree {
         this.root = root;
     }
 
-    public TreeNode getLeft() {
-        return left;
+    public void add(String value) {
+        TreeNode curr = root;
+        while (true) {
+            if (curr.getValue().compareTo(value) == 0) {
+                return;
+            }
+            if (curr.getValue().compareTo(value) > 0) {
+                if (curr.getLeft() == null) {
+                    curr.setLeft(new TreeNode(value, curr));
+                    return;
+                } else {
+                    curr = curr.getLeft();
+                }
+            }
+            if (curr.getValue().compareTo(value) < 0) {
+                if (curr.getRight() == null) {
+                    curr.setRight(new TreeNode(value, curr));
+                    return;
+                } else {
+                    curr = curr.getRight();
+                }
+            }
+        }
     }
 
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
-
-    public TreeNode getRight() {
-        return right;
-    }
-
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
-
-    public void add(String value){
-
+    public boolean search(String value) {
+        TreeNode curr = root;
+        while (true) {
+            if (curr.getValue().compareTo(value) == 0) {
+                return true;
+            }
+            if (curr.getValue().compareTo(value) > 0) {
+                if (curr.getLeft() == null) {
+                    return false;
+                } else {
+                    curr = curr.getLeft();
+                }
+            }
+            if (curr.getValue().compareTo(value) < 0) {
+                if (curr.getRight() == null) {
+                    return false;
+                } else {
+                    curr = curr.getRight();
+                }
+            }
+        }
     }
 
     public BinaryTree(TreeNode root) {
