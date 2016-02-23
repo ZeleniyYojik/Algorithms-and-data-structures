@@ -45,23 +45,32 @@ public class BinaryTree {
                 HashTable.comp++;
                 return true;
             }
+            HashTable.comp++;
+
             if (curr.getValue().compareTo(value) > 0) {
                 HashTable.comp++;
                 if (curr.getLeft() == null) {
                     HashTable.comp++;
                     return false;
                 } else {
+                    HashTable.comp++;
                     curr = curr.getLeft();
                 }
+            } else {
+                HashTable.comp++;
             }
+
             if (curr.getValue().compareTo(value) < 0) {
                 HashTable.comp++;
                 if (curr.getRight() == null) {
                     HashTable.comp++;
                     return false;
                 } else {
+                    HashTable.comp++;
                     curr = curr.getRight();
                 }
+            } else {
+                HashTable.comp++;
             }
         }
     }

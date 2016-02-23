@@ -38,6 +38,7 @@ public class HashTable {
             HashTable.comp++;
             return false;
         }
+        HashTable.comp++;
         return cell.get_binaryTree().search(value);//т.к. поиск в ячейке - поиск по дереву, можно не сравнивать значение самой ячейки, а уйти сразу в дерево
     }
 
@@ -46,7 +47,7 @@ public class HashTable {
     }
 
     private void resize(int newSize) {
-        HashCell[] newCells = new HashCell[newSize+1];
+        HashCell[] newCells = new HashCell[newSize + 1];
         for (int i = 0; i < this.cells.length; i++) {
             newCells[i] = this.cells[i];
         }
