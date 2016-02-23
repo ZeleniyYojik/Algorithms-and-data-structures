@@ -30,6 +30,14 @@ public class TreeNode {
         this.right = right;
     }
 
+    public TreeNode getParent() {
+        return parent;
+    }
+
+    public void setParent(TreeNode parent) {
+        this.parent = parent;
+    }
+
     public TreeNode(String value, TreeNode parent) {
         this.value = value;
         this.parent = parent;

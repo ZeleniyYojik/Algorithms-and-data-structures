@@ -17,6 +17,7 @@ public class Main {
         for (String line : lines) {
             hashTable.add(line);
         }
+        hashTable.remove("YnvdXdhpVRDBjjiStwjTPmSDvpHvyCMA");
         for (String line : lines) {
             hashTable.search(line);
         }
