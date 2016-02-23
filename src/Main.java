@@ -1,3 +1,4 @@
+import Hash.HashCell;
 import Hash.HashTable;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class Main {
         }
         hashTable.remove("YnvdXdhpVRDBjjiStwjTPmSDvpHvyCMA");
         for (String line : lines) {
-            hashTable.search(line);
+            if (!hashTable.search(line)){System.out.println("Удалил");}
         }
         System.out.println("Коллизий: " + hashTable.getCollisions());
         System.out.println("Сравнений: " + HashTable.comp);
