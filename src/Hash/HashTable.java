@@ -17,13 +17,10 @@ public class HashTable {
             cell = cells[hashCode];
         } catch (IndexOutOfBoundsException e) {
             this.resize(hashCode);
-            System.out.println("RESIZE!!");
         }
         if (cell == null) {
             cells[hashCode] = new HashCell(hashCode, value);
-        } else if (cell.get_value() == value) {
-            return;
-        } else {
+        }  else {
             if (!cell.get_binaryTree().search(value)) { //для подсчета количества коллизий т.к. можем посчитать за коллизию уже записаное в дерево значение,
                 collisions++;                           //иначе можно просто делать add.
                 cell.get_binaryTree().add(value);

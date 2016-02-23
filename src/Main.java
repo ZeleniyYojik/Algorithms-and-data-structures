@@ -20,7 +20,7 @@ public class Main {
         }
         hashTable.remove("YnvdXdhpVRDBjjiStwjTPmSDvpHvyCMA");
         for (String line : lines) {
-            if (!hashTable.search(line)){System.out.println("Удалил");}
+            hashTable.search(line);
         }
         System.out.println("Коллизий: " + hashTable.getCollisions());
         System.out.println("Сравнений: " + HashTable.comp);
