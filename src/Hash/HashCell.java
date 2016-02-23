@@ -6,16 +6,16 @@ import Tree.TreeNode;
 //Чего делаем то? Идентификатор - value или key? Нужен ли вообще key?
 public class HashCell {
     private int _key;
-    private String _value;   //может надо обращаться сразу к корню дерева?
+//    private String _value;   //может надо обращаться сразу к корню дерева?
     private BinaryTree _binaryTree;
 
     public void set_key(int _key) {
         this._key = _key;
     }
 
-    public void set_value(String _value) {
-        this._value = _value;
-    }
+//    public void set_value(String _value) {
+//        this._value = _value;
+//    }
 
     public void set_binaryTree(BinaryTree _binaryTree) {
         this._binaryTree = _binaryTree;
@@ -25,9 +25,9 @@ public class HashCell {
         return _key;
     }
 
-    public String get_value() {
-        return _value;
-    }
+//    public String get_value() {
+//        return _value;
+//    }
 
     public BinaryTree get_binaryTree() {
         return _binaryTree;
@@ -35,7 +35,7 @@ public class HashCell {
 
     public HashCell(int _key, String _value) {
         this._key = _key;
-        this._value = _value;
+//        this._value = _value;
         _binaryTree = new BinaryTree(new TreeNode(_value, null));
     }
 }

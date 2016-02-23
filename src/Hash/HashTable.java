@@ -50,7 +50,7 @@ public class HashTable {
             this.cells[hash] = null;
             return;
         }
-        cell.set_value(cell.get_binaryTree().getRoot().getValue());//если удаление было из корня, то меняем значение ячейки.
+        //cell.set_value(cell.get_binaryTree().getRoot().getValue());//если удаление было из корня, то меняем значение ячейки.
     }
 
     public int getHashCode(String identifier) {
