@@ -56,20 +56,6 @@ public class HashTable {
         cell.set_value(cell.get_binaryTree().getRoot().getValue());//если удаление было из корня, то меняем значение ячейки.
     }
 
-//    public void removeRecursive(String value) {
-//        int hash = getHashCode(value);
-//        HashCell cell = this.cells[hash];
-//        if (cell == null) {
-//            return;
-//        }
-//        cell.get_binaryTree().setRoot(cell.get_binaryTree().removeRecursive(cell.get_binaryTree().getRoot(), value));
-//        if (cell.get_binaryTree().getRoot() == null) {
-//            this.cells[hash] = null;
-//            return;
-//        }
-//        cell.set_value(cell.get_binaryTree().getRoot().getValue());//если удаление было из корня, то меняем значение ячейки.
-//    }
-
     public int getHashCode(String identifier) {
         return (int) identifier.charAt(0) + (int) identifier.charAt(identifier.length() - 1);
     }

@@ -153,31 +153,6 @@ public class BinaryTree {
         }
     }
 
-//    public TreeNode removeRecursive(TreeNode node, String value) {
-//        if (node == null) {
-//            System.out.println("null");
-//            return node;
-//        }
-//        if (node.getValue().compareTo(value) > 0) {
-//            System.out.println("left");
-//            node.setLeft(removeRecursive(node.getLeft(), value));
-//        } else if (node.getValue().compareTo(value) < 0) {
-//            System.out.println("right");
-//            node.setRight(removeRecursive(node.getRight(), value));
-//        } else if (node.getLeft() != null && node.getRight() != null) {
-//            System.out.println("mid");
-//            node.setValue(findMin(node.getRight()).getValue());
-//            node.setRight(removeRecursive(node.getRight(), node.getValue()));
-//        } else {
-//            System.out.println("end");
-//            if (node.getLeft() != null) {
-//                node = node.getLeft();
-//            } else {
-//                node = node.getRight();
-//            }
-//        }
-//        return node;
-//    }
 
     public TreeNode searchNode(String value) {
         TreeNode curr = root;
