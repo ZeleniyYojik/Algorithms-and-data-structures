@@ -1,3 +1,8 @@
+package Hash;
+
+import Tree.BinaryTree;
+import Tree.TreeNode;
+
 //Чего делаем то? Идентификатор - value или key? Нужен ли вообще key?
 public class HashCell {
     private int _key;

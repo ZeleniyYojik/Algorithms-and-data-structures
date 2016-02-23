@@ -12,7 +12,7 @@ public class FileWorker {
         try (
                 InputStream fis = new FileInputStream(path);
                 InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
-                BufferedReader br = new BufferedReader(isr);
+                BufferedReader br = new BufferedReader(isr)
         ) {
             while ((line = br.readLine()) != null) {
                 result.add(line);

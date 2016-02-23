@@ -1,8 +1,10 @@
+package Hash;
+
 public class HashTable {
     public HashCell[] cells = new HashCell[100];
     private int collisions = 0; //Возможно надо сделать выборку по нескольким разным файлам для получения среднего значения
-    public static int searchCounts = 0;
-    public static int comp = 0;
+    public static int searchCounts = 0;//Для сбора статистики
+    public static int comp = 0;        //
 
     public int getCollisions() {
         return collisions;
@@ -36,10 +38,7 @@ public class HashTable {
             HashTable.comp++;
             return false;
         }
-//        if (cell.get_value() == value) {
-//            return true;
-//        }
-        return cell.get_binaryTree().search(value);
+        return cell.get_binaryTree().search(value);//т.к. поиск в ячейке - поиск по дереву, можно не сравнивать значение самой ячейки, а уйти сразу в дерево
     }
 
     public int getHashCode(String identifier) {

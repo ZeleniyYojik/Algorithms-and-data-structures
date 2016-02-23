@@ -1,3 +1,7 @@
+package Tree;
+
+import Hash.HashTable;
+
 public class BinaryTree {
     private TreeNode root;
 
