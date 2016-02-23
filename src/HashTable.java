@@ -1,6 +1,8 @@
 public class HashTable {
     public HashCell[] cells = new HashCell[2300];
     private int collisions = 0;
+    public static int searchCounts = 0;
+    public static int comp = 0;
 
     public int getCollisions() {
         return collisions;
@@ -14,16 +16,18 @@ public class HashTable {
         } else if (cell.get_value() == value) {
             return;
         } else {
-            if (cell.get_binaryTree().search(value)) { //для подсчета количества коллизий т.к. можем посчитать за коллизию уже записаное в дерево значение
-                collisions++;                          //, иначе можно просто делать add.
+            if (!cell.get_binaryTree().search(value)) { //для подсчета количества коллизий т.к. можем посчитать за коллизию уже записаное в дерево значение,
+                collisions++;                           //иначе можно просто делать add.
                 cell.get_binaryTree().add(value);
             }
         }
     }
 
     public boolean search(String value) {
+        HashTable.searchCounts++;
         HashCell cell = cells[getHashCode(value)];
         if (cell == null) {
+            HashTable.comp++;
             return false;
         }
 //        if (cell.get_value() == value) {
@@ -34,5 +38,9 @@ public class HashTable {
 
     public int getHashCode(String identifier) {
         return (int) identifier.charAt(0) + (int) identifier.charAt(identifier.length() - 1);
+    }
+
+    public int getMean(){
+        return comp/searchCounts;
     }
 }

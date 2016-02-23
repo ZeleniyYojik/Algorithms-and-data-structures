@@ -38,17 +38,22 @@ public class BinaryTree {
         TreeNode curr = root;
         while (true) {
             if (curr.getValue().compareTo(value) == 0) {
+                HashTable.comp++;
                 return true;
             }
             if (curr.getValue().compareTo(value) > 0) {
+                HashTable.comp++;
                 if (curr.getLeft() == null) {
+                    HashTable.comp++;
                     return false;
                 } else {
                     curr = curr.getLeft();
                 }
             }
             if (curr.getValue().compareTo(value) < 0) {
+                HashTable.comp++;
                 if (curr.getRight() == null) {
+                    HashTable.comp++;
                     return false;
                 } else {
                     curr = curr.getRight();

@@ -1,10 +1,25 @@
+import java.io.IOException;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
-        if (hashTable.cells[hashTable.getHashCode("вася")] == null) {
-            hashTable.cells[hashTable.getHashCode("вася")] = new HashCell(hashTable.getHashCode("вася"), "вася");
+        FileWorker fileWorker = new FileWorker("/home/panikun/Документы/Algorithms/data");
+        List<String> lines = null;
+        try {
+            lines = fileWorker.readFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        System.out.println(hashTable.cells[hashTable.getHashCode("вася")].get_value());
-        System.out.println(hashTable.getHashCode("вася"));
+        for (String line : lines) {
+            hashTable.add(line);
+        }
+        for (String line : lines) {
+            hashTable.search(line);
+        }
+        System.out.println("Коллизий: "+hashTable.getCollisions());
+        System.out.println("Сравнений: "+HashTable.comp);
+        System.out.println("Запросов на поиск: "+HashTable.searchCounts);
+        System.out.println("Среднее количество сравнений на запрос: "+hashTable.getMean());
     }
 }
