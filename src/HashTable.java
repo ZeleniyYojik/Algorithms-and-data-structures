@@ -1,6 +1,6 @@
 public class HashTable {
-    public HashCell[] cells = new HashCell[2300];
-    private int collisions = 0;
+    public HashCell[] cells = new HashCell[100];
+    private int collisions = 0; //Возможно надо сделать выборку по нескольким разным файлам для получения среднего значения
     public static int searchCounts = 0;
     public static int comp = 0;
 
@@ -10,7 +10,13 @@ public class HashTable {
 
     public void add(String value) {
         int hashCode = getHashCode(value);
-        HashCell cell = cells[hashCode];
+        HashCell cell = null;
+        try {
+            cell = cells[hashCode];
+        } catch (IndexOutOfBoundsException e) {
+            this.resize(hashCode);
+            System.out.println("RESIZE!!");
+        }
         if (cell == null) {
             cells[hashCode] = new HashCell(hashCode, value);
         } else if (cell.get_value() == value) {
@@ -40,7 +46,15 @@ public class HashTable {
         return (int) identifier.charAt(0) + (int) identifier.charAt(identifier.length() - 1);
     }
 
-    public int getMean(){
-        return comp/searchCounts;
+    private void resize(int newSize) {
+        HashCell[] newCells = new HashCell[newSize+1];
+        for (int i = 0; i < this.cells.length; i++) {
+            newCells[i] = this.cells[i];
+        }
+        this.cells = newCells;
+    }
+
+    public int getMean() {
+        return comp / searchCounts;
     }
 }
