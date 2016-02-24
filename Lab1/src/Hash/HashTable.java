@@ -32,10 +32,8 @@ public class HashTable {
         this.searchCounts++;
         HashCell cell = cells[getHashCode(value)];
         if (cell == null) {
-         //   this.comp++;
             return false;
         }
-       // this.comp++;
         return cell.get_binaryTree().search(value);
     }
 
