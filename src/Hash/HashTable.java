@@ -3,8 +3,8 @@ package Hash;
 public class HashTable {
     public HashCell[] cells = new HashCell[100];
     private int collisions = 0; //Возможно надо сделать выборку по нескольким разным файлам для получения среднего значения
-    public static int searchCounts = 0;//Для сбора статистики
-    public static int comp = 0;        //
+    public int searchCounts = 0;//Для сбора статистики
+    public int comp = 0;        //
 
     public int getCollisions() {
         return collisions;
@@ -19,7 +19,7 @@ public class HashTable {
             this.resize(hashCode);
         }
         if (cell == null) {
-            cells[hashCode] = new HashCell(hashCode, value);
+            cells[hashCode] = new HashCell(hashCode, value, this);
         }  else {
             if (!cell.get_binaryTree().search(value)) { //для подсчета количества коллизий т.к. можем посчитать за коллизию уже записаное в дерево значение,
                 collisions++;                           //иначе можно просто делать add.
@@ -29,13 +29,13 @@ public class HashTable {
     }
 
     public boolean search(String value) {
-        HashTable.searchCounts++;
+        this.searchCounts++;
         HashCell cell = cells[getHashCode(value)];
         if (cell == null) {
-            HashTable.comp++;
+            this.comp++;
             return false;
         }
-        HashTable.comp++;
+        this.comp++;
         return cell.get_binaryTree().search(value);//т.к. поиск в ячейке - поиск по дереву, можно не сравнивать значение самой ячейки, а уйти сразу в дерево
     }
 
@@ -67,5 +67,17 @@ public class HashTable {
 
     public int getMean() {
         return comp / searchCounts;
+    }
+
+    public void setCollisions(int collisions) {
+        this.collisions = collisions;
+    }
+
+    public void setSearchCounts(int searchCounts) {
+        this.searchCounts = searchCounts;
+    }
+
+    public void setComp(int comp) {
+        this.comp = comp;
     }
 }

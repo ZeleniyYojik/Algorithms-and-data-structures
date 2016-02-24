@@ -15,7 +15,7 @@ public class FileWorker {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>(filesCount);
         for (int i = 0; i < filesCount; i++) {
             try (
-                    InputStream fis = new FileInputStream(path+Integer.toString(i));
+                    InputStream fis = new FileInputStream(path + Integer.toString(i));
                     InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
                     BufferedReader br = new BufferedReader(isr)
             ) {
@@ -50,6 +50,10 @@ public class FileWorker {
 
     public int getFilesCount() {
         return filesCount;
+    }
+
+    public int getStep() {
+        return step;
     }
 
     public FileWorker(String path) {

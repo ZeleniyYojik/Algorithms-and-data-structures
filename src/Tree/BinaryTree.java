@@ -4,6 +4,7 @@ import Hash.HashTable;
 
 public class BinaryTree {
     private TreeNode root;
+    HashTable table;
 
     public TreeNode getRoot() {
         return root;
@@ -42,13 +43,13 @@ public class BinaryTree {
         TreeNode curr = root;
         while (true) {
             if (curr.getValue().compareTo(value) == 0) {
-                HashTable.comp++;
+                table.comp++;
                 return true;
             }
-            HashTable.comp++;
+            table.comp++;
 
             if (curr.getValue().compareTo(value) > 0) {
-                HashTable.comp++;
+                table.comp++;
                 if (curr.getLeft() == null) {
 //                    HashTable.comp++;
                     return false;
@@ -57,11 +58,11 @@ public class BinaryTree {
                     curr = curr.getLeft();
                 }
             } else {
-                HashTable.comp++;
+                table.comp++;
             }
 
             if (curr.getValue().compareTo(value) < 0) {
-                HashTable.comp++;
+                table.comp++;
                 if (curr.getRight() == null) {
 //                    HashTable.comp++;
                     return false;
@@ -70,7 +71,7 @@ public class BinaryTree {
                     curr = curr.getRight();
                 }
             } else {
-                HashTable.comp++;
+                table.comp++;
             }
         }
     }
@@ -194,7 +195,8 @@ public class BinaryTree {
         return curr;
     }
 
-    public BinaryTree(TreeNode root) {
+    public BinaryTree(TreeNode root, HashTable table) {
         this.root = root;
+        this.table = table;
     }
 }
