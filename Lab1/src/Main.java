@@ -9,19 +9,24 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         FileWorker fileWorker = new FileWorker("/home/panikun/Документы/Algorithms/resources/data");
-        try {
-            fileWorker.generate();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+       //Генерим файлики
+//        try {
+//            fileWorker.generate();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         ArrayList<ArrayList<String>> lines = null;
         ArrayList<HashTable> tables = new ArrayList<>(fileWorker.getFilesCount());
+
+        //Читам страшный лист листов строк
         try {
             lines = fileWorker.readFromFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //Создаем таблицы для каждого файла и заполняем, заодно считаем коллизии и выводим
         for (int i = 0; i < fileWorker.getFilesCount(); i++) {
             HashTable hashTable = new HashTable();
             ArrayList<String> currLines = lines.get(i);
@@ -34,7 +39,10 @@ public class Main {
             System.out.println();
             tables.add(hashTable);
         }
+
         System.out.println("=============================================================");
+
+        //Проводим поиска каждого элемента таблицы в каждой таблице, считаем количество сравнений и выводим
         for (int i = 0; i < fileWorker.getFilesCount(); i++) {
             HashTable hashTable = tables.get(i);
             ArrayList<String> currLines = lines.get(i);
