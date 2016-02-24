@@ -51,10 +51,8 @@ public class BinaryTree {
             if (curr.getValue().compareTo(value) > 0) {
                 table.comp++;
                 if (curr.getLeft() == null) {
-//                    HashTable.comp++;
                     return false;
                 } else {
-//                    HashTable.comp++;
                     curr = curr.getLeft();
                 }
             } else {
@@ -64,10 +62,8 @@ public class BinaryTree {
             if (curr.getValue().compareTo(value) < 0) {
                 table.comp++;
                 if (curr.getRight() == null) {
-//                    HashTable.comp++;
                     return false;
                 } else {
-//                    HashTable.comp++;
                     curr = curr.getRight();
                 }
             } else {

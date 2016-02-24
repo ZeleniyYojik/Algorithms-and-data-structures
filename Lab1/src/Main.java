@@ -8,7 +8,7 @@ import java.util.List;
 //lab 1 v7
 public class Main {
     public static void main(String[] args) {
-        FileWorker fileWorker = new FileWorker("/home/panikun/Документы/Algorithms/resources/data");
+        FileWorker fileWorker = new FileWorker("/home/panikun/Документы/Algorithms/Lab1/resources/data");
        //Генерим файлики
 //        try {
 //            fileWorker.generate();

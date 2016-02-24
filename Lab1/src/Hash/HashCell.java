@@ -3,41 +3,18 @@ package Hash;
 import Tree.BinaryTree;
 import Tree.TreeNode;
 
-//Чего делаем то? Идентификатор - value или key? Нужен ли вообще key?
+
 public class HashCell {
-    private int _key;
-    //    private String _value;   //может надо обращаться сразу к корню дерева?
     private BinaryTree _binaryTree;
     private HashTable table;
 
-    public void set_key(int _key) {
-        this._key = _key;
-    }
-
-//    public void set_value(String _value) {
-//        this._value = _value;
-//    }
-
-    public void set_binaryTree(BinaryTree _binaryTree) {
-        this._binaryTree = _binaryTree;
-    }
-
-    public int get_key() {
-        return _key;
-    }
-
-//    public String get_value() {
-//        return _value;
-//    }
 
     public BinaryTree get_binaryTree() {
         return _binaryTree;
     }
 
-    public HashCell(int _key, String _value, HashTable table) {
-        this._key = _key;
+    public HashCell(String _value, HashTable table) {
         this.table = table;
-//        this._value = _value;
         _binaryTree = new BinaryTree(new TreeNode(_value, null), table);
     }
 }

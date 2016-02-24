@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class FileWorker {
     private String path;
-    private int filesCount = 10;
-    private int step = 100;
+    private int filesCount = 20;
+    private int step = 50;
 
     public ArrayList<ArrayList<String>> readFromFile() throws IOException {
         String line;

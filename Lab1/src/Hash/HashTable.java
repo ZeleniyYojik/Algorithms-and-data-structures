@@ -2,7 +2,7 @@ package Hash;
 
 public class HashTable {
     public HashCell[] cells = new HashCell[100];
-    private int collisions = 0; //Возможно надо сделать выборку по нескольким разным файлам для получения среднего значения
+    private int collisions = 0; //
     public int searchCounts = 0;//Для сбора статистики
     public int comp = 0;        //
 
@@ -19,7 +19,7 @@ public class HashTable {
             this.resize(hashCode);
         }
         if (cell == null) {
-            cells[hashCode] = new HashCell(hashCode, value, this);
+            cells[hashCode] = new HashCell(value, this);
         }  else {
             if (!cell.get_binaryTree().search(value)) { //для подсчета количества коллизий т.к. можем посчитать за коллизию уже записаное в дерево значение,
                 collisions++;                           //иначе можно просто делать add.
@@ -32,11 +32,11 @@ public class HashTable {
         this.searchCounts++;
         HashCell cell = cells[getHashCode(value)];
         if (cell == null) {
-            this.comp++;
+         //   this.comp++;
             return false;
         }
-        this.comp++;
-        return cell.get_binaryTree().search(value);//т.к. поиск в ячейке - поиск по дереву, можно не сравнивать значение самой ячейки, а уйти сразу в дерево
+       // this.comp++;
+        return cell.get_binaryTree().search(value);
     }
 
     public void remove(String value) {
@@ -50,7 +50,6 @@ public class HashTable {
             this.cells[hash] = null;
             return;
         }
-        //cell.set_value(cell.get_binaryTree().getRoot().getValue());//если удаление было из корня, то меняем значение ячейки.
     }
 
     public int getHashCode(String identifier) {
@@ -65,6 +64,7 @@ public class HashTable {
         this.cells = newCells;
     }
 
+    //Получение среднего количества сравнений
     public int getMean() {
         return comp / searchCounts;
     }
