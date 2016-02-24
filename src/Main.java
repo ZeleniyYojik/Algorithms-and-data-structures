@@ -1,4 +1,4 @@
-import Hash.HashCell;
+import Files.FileWorker;
 import Hash.HashTable;
 
 import java.io.IOException;
@@ -9,6 +9,11 @@ public class Main {
     public static void main(String[] args) {
         HashTable hashTable = new HashTable();
         FileWorker fileWorker = new FileWorker("/home/panikun/Документы/Algorithms/resources/data");
+//        try {
+//            fileWorker.generate();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         List<String> lines = null;
         try {
             lines = fileWorker.readFromFile();
