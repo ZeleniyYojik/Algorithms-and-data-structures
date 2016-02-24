@@ -2,6 +2,7 @@ import Files.FileWorker;
 import Hash.HashTable;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 //lab 1 v7
@@ -14,18 +15,23 @@ public class Main {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        List<String> lines = null;
+        ArrayList<ArrayList<String>> lines = null;
         try {
             lines = fileWorker.readFromFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (String line : lines) {
-            hashTable.add(line);
+        for (int i = 0; i < fileWorker.getFilesCount(); i++) {
+            ArrayList<String> currLines = lines.get(i);
+            for (String line : currLines) {
+                hashTable.add(line);
+            }
         }
-        hashTable.remove("YnvdXdhpVRDBjjiStwjTPmSDvpHvyCMA");
-        for (String line : lines) {
-            hashTable.search(line);
+        for (int i = 0; i < fileWorker.getFilesCount(); i++) {
+            ArrayList<String> currLines = lines.get(i);
+            for (String line : currLines) {
+                hashTable.search(line);
+            }
         }
         System.out.println("Коллизий: " + hashTable.getCollisions());
         System.out.println("Сравнений: " + HashTable.comp);

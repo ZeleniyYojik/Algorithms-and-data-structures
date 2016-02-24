@@ -3,24 +3,26 @@ package Files;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class FileWorker {
     private String path;
-    private int fileCounts = 10;
+    private int filesCount = 10;
     private int step = 100;
 
-    public List readFromFile() throws IOException {
+    public ArrayList<ArrayList<String>> readFromFile() throws IOException {
         String line;
-        List<String> result = new ArrayList<>();
-        try (
-                InputStream fis = new FileInputStream(path);
-                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
-                BufferedReader br = new BufferedReader(isr)
-        ) {
-            while ((line = br.readLine()) != null) {
-                result.add(line);
+        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>(filesCount);
+        for (int i = 0; i < filesCount; i++) {
+            try (
+                    InputStream fis = new FileInputStream(path+Integer.toString(i));
+                    InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                    BufferedReader br = new BufferedReader(isr)
+            ) {
+                result.add(new ArrayList<>());
+                while ((line = br.readLine()) != null) {
+                    result.get(i).add(line);
+                }
             }
         }
         return result;
@@ -28,8 +30,7 @@ public class FileWorker {
 
     public void generate() throws IOException {
         Random random = new Random();
-        random.nextInt();
-        for (int i = 0; i < fileCounts; i++) {
+        for (int i = 0; i < filesCount; i++) {
             try (
                     OutputStream ous = new FileOutputStream(path + Integer.toString(i));
                     OutputStreamWriter ouw = new OutputStreamWriter(ous, Charset.forName("UTF-8"));
@@ -38,12 +39,17 @@ public class FileWorker {
                 for (int j = 0; j < step + i * step; j++) {
                     StringBuffer stringBuffer = new StringBuffer();
                     for (int k = 0; k < 32; k++) {
-                        stringBuffer.append((char)(random.nextInt(78)+48));
+                        stringBuffer.append((char) (random.nextInt(93) + 33));
                     }
                     bw.write(stringBuffer.toString());
+                    bw.newLine();
                 }
             }
         }
+    }
+
+    public int getFilesCount() {
+        return filesCount;
     }
 
     public FileWorker(String path) {
