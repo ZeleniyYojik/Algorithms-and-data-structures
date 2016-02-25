@@ -1,7 +1,8 @@
 import Files.FileWorker;
 import Hash.HashTable;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         FileWorker fileWorker = new FileWorker("/home/panikun/Документы/Algorithms/Lab1/resources/data");
-       //Генерим файлики
+        //Генерим файлики
 //        try {
 //            fileWorker.generate();
 //        } catch (IOException e) {
@@ -46,6 +47,8 @@ public class Main {
         for (int i = 0; i < fileWorker.getFilesCount(); i++) {
             HashTable hashTable = tables.get(i);
             ArrayList<String> currLines = lines.get(i);
+            hashTable.comp = 0;
+            hashTable.setSearchCounts(0);
             for (String line : currLines) {
                 hashTable.search(line);
             }
@@ -55,6 +58,30 @@ public class Main {
             System.out.println("Запросов на поиск: " + hashTable.searchCounts);
             System.out.println("Среднее количество сравнений на запрос: " + hashTable.getMean());
             System.out.println();
+        }
+
+
+        String path = "/home/panikun/Документы/Algorithms/Lab1/resources/report.csv";
+        char separator = ';';
+        try (
+                OutputStream ous = new FileOutputStream(path);
+                OutputStreamWriter ouw = new OutputStreamWriter(ous, Charset.forName("UTF-8"));
+                BufferedWriter bw = new BufferedWriter(ouw)
+        ) {
+            int i = 0;
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append("Номер файла" + separator + "Количество элементов" + separator + "Количество коллизий" + separator + "Среднее количество сравнений");
+            bw.write(stringBuffer.toString());
+            bw.newLine();
+            for (HashTable table : tables) {
+                stringBuffer = new StringBuffer();
+                stringBuffer.append("" + i + separator + (i * fileWorker.getStep() + fileWorker.getStep()) + separator + table.getCollisions() + separator + table.getMean());
+                bw.write(stringBuffer.toString());
+                bw.newLine();
+                i++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

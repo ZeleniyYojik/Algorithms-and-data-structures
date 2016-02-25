@@ -8,7 +8,9 @@ import java.util.Random;
 public class FileWorker {
     private String path;
     private int filesCount = 20;
-    private int step = 50;
+    private int step = 1000;
+    public static final int firstSymbol = 33;
+    public static final int lastSymbol = 126;
 
     public ArrayList<ArrayList<String>> readFromFile() throws IOException {
         String line;
@@ -39,7 +41,7 @@ public class FileWorker {
                 for (int j = 0; j < step + i * step; j++) {
                     StringBuffer stringBuffer = new StringBuffer();
                     for (int k = 0; k < 32; k++) {
-                        stringBuffer.append((char) (random.nextInt(93) + 33));
+                        stringBuffer.append((char) (random.nextInt(lastSymbol - firstSymbol) + firstSymbol));
                     }
                     bw.write(stringBuffer.toString());
                     bw.newLine();

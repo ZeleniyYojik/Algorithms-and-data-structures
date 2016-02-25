@@ -1,10 +1,12 @@
 package Hash;
 
+import Files.FileWorker;
+
 public class HashTable {
     public HashCell[] cells = new HashCell[100];
     private int collisions = 0; //
     public int searchCounts = 0;//Для сбора статистики
-    public int comp = 0;        //
+    public double comp = 0;     //
 
     public int getCollisions() {
         return collisions;
@@ -20,7 +22,7 @@ public class HashTable {
         }
         if (cell == null) {
             cells[hashCode] = new HashCell(value, this);
-        }  else {
+        } else {
             if (!cell.get_binaryTree().search(value)) { //для подсчета количества коллизий т.к. можем посчитать за коллизию уже записаное в дерево значение,
                 collisions++;                           //иначе можно просто делать add.
                 cell.get_binaryTree().add(value);
@@ -51,7 +53,7 @@ public class HashTable {
     }
 
     public int getHashCode(String identifier) {
-        return (int) identifier.charAt(0) + (int) identifier.charAt(identifier.length() - 1);
+        return (int) identifier.charAt(0) + (int) identifier.charAt(identifier.length() - 1) - FileWorker.firstSymbol * 2;//
     }
 
     private void resize(int newSize) {
@@ -63,7 +65,7 @@ public class HashTable {
     }
 
     //Получение среднего количества сравнений
-    public int getMean() {
+    public double getMean() {
         return comp / searchCounts;
     }
 

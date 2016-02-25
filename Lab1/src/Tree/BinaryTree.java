@@ -17,10 +17,11 @@ public class BinaryTree {
     public void add(String value) {
         TreeNode curr = root;
         while (true) {
-            if (curr.getValue().compareTo(value) == 0) {
+            int comparison = curr.getValue().compareTo(value);
+            if (comparison == 0) {
                 return;
             }
-            if (curr.getValue().compareTo(value) > 0) {
+            if (comparison > 0) {
                 if (curr.getLeft() == null) {
                     curr.setLeft(new TreeNode(value, curr));
                     return;
@@ -28,7 +29,7 @@ public class BinaryTree {
                     curr = curr.getLeft();
                 }
             }
-            if (curr.getValue().compareTo(value) < 0) {
+            if (comparison < 0) {
                 if (curr.getRight() == null) {
                     curr.setRight(new TreeNode(value, curr));
                     return;
@@ -42,32 +43,26 @@ public class BinaryTree {
     public boolean search(String value) {
         TreeNode curr = root;
         while (true) {
-            if (curr.getValue().compareTo(value) == 0) {
-                table.comp++;
+            int comparison = curr.getValue().compareTo(value);
+            table.comp++;
+            if (comparison == 0) {
                 return true;
             }
-            table.comp++;
 
-            if (curr.getValue().compareTo(value) > 0) {
-                table.comp++;
+            if (comparison > 0) {
                 if (curr.getLeft() == null) {
                     return false;
                 } else {
                     curr = curr.getLeft();
                 }
-            } else {
-                table.comp++;
             }
 
-            if (curr.getValue().compareTo(value) < 0) {
-                table.comp++;
+            if (comparison < 0) {
                 if (curr.getRight() == null) {
                     return false;
                 } else {
                     curr = curr.getRight();
                 }
-            } else {
-                table.comp++;
             }
         }
     }
