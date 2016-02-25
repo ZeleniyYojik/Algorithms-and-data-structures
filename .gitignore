@@ -3,5 +3,6 @@
 *.lst
 *~
 out
+*.csv
 data*
 *#
