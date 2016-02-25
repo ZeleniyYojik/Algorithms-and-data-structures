@@ -2,3 +2,6 @@
 *.iml
 *.lst
 *~
+*.csv
+data*
+out
