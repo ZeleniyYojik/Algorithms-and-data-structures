@@ -5,7 +5,10 @@ import java.util.List;
 
 public class Vertex {
     private List<Edge> outgoingEdges = new ArrayList<>();
-    public int key;
+    public double key;
+    public double dist;
+    public Vertex previous;
+    public int heapIndex;
 
     public List<Edge> getOutgoingEdges() {
         return outgoingEdges;

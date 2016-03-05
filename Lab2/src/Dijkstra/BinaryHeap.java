@@ -1,19 +1,22 @@
+package Dijkstra;
+
 import GraphPack.Vertex;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryHeap {
-    private List<Vertex> keys;
+    private List<Vertex> keys = new ArrayList<>();
 
     public void siftDown(int i) {
-        while ((2 * i + 1) > (this.keys.size() - 1)) {
+     while ((2 * i + 1) < (this.keys.size() - 1)) {
             int right = 2 * i + 2;
             int left = 2 * i + 1;
             int cur = left;
-            if (right < (this.keys.size() - 1)) {
+            if ((right < (this.keys.size() - 1)) && (this.keys.get(right).key < this.keys.get(left).key)) {
                 cur = right;
             }
-            if (this.keys.get(i).key > this.keys.get(cur).key) {
+            if (this.keys.get(i).key <= this.keys.get(cur).key) {
                 break;
             }
             swap(i, cur);
@@ -30,20 +33,27 @@ public class BinaryHeap {
 
     public Vertex extractMin() {
         Vertex min = this.keys.get(0);
-        this.keys.set(0,this.keys.get(this.keys.size()-1));
-        this.keys.remove(this.keys.size()-1);
+        swap(0, this.keys.size() - 1);
+        this.keys.remove(this.keys.size() - 1);
         siftDown(0);
         return min;
     }
 
     public void add(Vertex vertex) {
         this.keys.add(vertex);
+        vertex.heapIndex = this.keys.size() - 1;
         this.siftUp(this.keys.size() - 1);
     }
 
     void swap(int i, int j) {
         Vertex buff = this.keys.get(i);
+        buff.heapIndex = j;
+        this.keys.get(j).heapIndex=i;
         this.keys.set(i, this.keys.get(j));
         this.keys.set(j, buff);
+    }
+
+    public List<Vertex> getKeys() {
+        return keys;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Random;
 
 //гарантируется связность, не гарантируется то, что из любой вершины можно попасть в любую другую
 public class GraphGenerator {
-    public Graph generateGraph(int vertexesCount, int edgesCount, int minWeight, int maxWeight) {
+        public Graph generateGraph(int vertexesCount, int edgesCount, int minWeight, int maxWeight) {
         /*максимальное количество ребер - перестановка сочетание n элементов по 2
             n!/(2!*(n-2)!) и *2 т.к. граф направленный
           минимальное количество ребер для связности n-1
