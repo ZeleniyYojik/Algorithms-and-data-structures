@@ -26,10 +26,10 @@ public class DijkstraBinaryHeap {
                     next.key = vertex.dist + vertex.getOutgoingEdges().get(i).getWeight();
                     next.previous = vertex;
                     heap.siftUp(next.heapIndex);
-                    System.out.println("123");
                 }
             }
         }
-        return (System.currentTimeMillis()-timeout)/100;
+        System.out.println(heap.getKeys().size());
+        return (System.currentTimeMillis()-timeout);
     }
 }
