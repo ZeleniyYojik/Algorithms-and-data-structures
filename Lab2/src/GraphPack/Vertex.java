@@ -9,6 +9,7 @@ public class Vertex {
     public double dist;
     public Vertex previous;
     public int heapIndex;
+    public boolean visited;
 
     public List<Edge> getOutgoingEdges() {
         return outgoingEdges;

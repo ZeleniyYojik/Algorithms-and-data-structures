@@ -29,7 +29,6 @@ public class DijkstraBinaryHeap {
                 }
             }
         }
-        System.out.println(heap.getKeys().size());
         return (System.currentTimeMillis()-timeout);
     }
 }
