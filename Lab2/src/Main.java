@@ -10,7 +10,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         try (
-                OutputStream ous = new FileOutputStream("output4.csv");
+                OutputStream ous = new FileOutputStream("output5.csv");
                 OutputStreamWriter ouw = new OutputStreamWriter(ous, Charset.forName("UTF-8"));
                 BufferedWriter bw = new BufferedWriter(ouw)
         ) {
@@ -28,7 +28,7 @@ public class Main {
                 long timeHeap = 0;
                 long timeMark = 0;
                 for (int j = 0; j < 5; j++) {
-                    timeHeap += DijkstraBinaryHeap.dijkstra(graph, s);
+//                    timeHeap += DijkstraBinaryHeap.dijkstra(graph, s);
                     timeMark += DijkstraWithMarks.dijkstraWithMarks(graph, s);
                 }
                 timeHeap /= 5;
