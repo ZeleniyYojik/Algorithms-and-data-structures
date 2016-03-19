@@ -16,9 +16,9 @@ public class Main {
         ) {
             GraphGenerator graphGenerator = new GraphGenerator();
             StringBuilder sb = new StringBuilder();
-            sb.append("Количество вершин;Дейкстры на 2-куче;Дейкстры с метками;");
-            bw.write(sb.toString());
-            bw.newLine();
+//            sb.append("Количество вершин;Дейкстры на 2-куче;Дейкстры с метками;");
+//            bw.write(sb.toString());
+//            bw.newLine();
             for (int i = 0; i <= 10000000  ; i += 100000) {
                 System.out.println(i / 100000);
                 sb = new StringBuilder();
@@ -29,13 +29,13 @@ public class Main {
                 long timeMark = 0;
                 for (int j = 0; j < 5; j++) {
 //                    timeHeap += DijkstraBinaryHeap.dijkstra(graph, s);
-                    timeMark += DijkstraWithMarks.dijkstraWithMarks(graph, s);
+//                    timeMark += DijkstraWithMarks.dijkstraWithMarks(graph, s);
                 }
                 timeHeap /= 5;
                 timeMark /= 5;
-                sb.append(timeHeap + ";" + timeMark);
-                bw.write(sb.toString());
-                bw.newLine();
+//                sb.append(timeHeap + ";" + timeMark);
+//                bw.write(sb.toString());
+//                bw.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
