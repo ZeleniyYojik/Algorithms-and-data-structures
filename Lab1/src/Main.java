@@ -34,10 +34,6 @@ public class Main {
             for (String line : currLines) {
                 hashTable.add(line);
             }
-            System.out.println("Файл номер: " + i);
-            System.out.println("Количество элементов: " + (i * fileWorker.getStep() + fileWorker.getStep()));
-            System.out.println("Коллизий: " + hashTable.getCollisions());
-            System.out.println();
             tables.add(hashTable);
         }
 
@@ -57,9 +53,9 @@ public class Main {
             System.out.println("Сравнений: " + hashTable.comp);
             System.out.println("Запросов на поиск: " + hashTable.searchCounts);
             System.out.println("Среднее количество сравнений на запрос: " + hashTable.getMean());
+            System.out.println("Коллизий: " + hashTable.getCollisions());
             System.out.println();
         }
-
 
         String path = "/home/panikun/Документы/Algorithms/Lab1/resources/report.csv";
         char separator = ';';
