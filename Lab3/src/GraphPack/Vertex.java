@@ -12,11 +12,13 @@ public class Vertex {
         return incidentEdges;
     }
 
-    public void setIncidentEdges(List<Edge> incidentEdges) {
-        this.incidentEdges = incidentEdges;
-    }
 
     public boolean duplicateEdge(Vertex vertex1, Vertex vertex2) {
-        return true;
+        for (Edge edge:incidentEdges){
+            if (edge.duplicate(vertex1,vertex2)){
+                return true;
+            }
+        }
+        return false;
     }
 }
