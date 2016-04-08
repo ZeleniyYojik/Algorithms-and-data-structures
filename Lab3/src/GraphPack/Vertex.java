@@ -10,7 +10,7 @@ public class Vertex {
     public double key;
     public int heapIndex;
     public int index;
-    public Comp comp;
+    public Comp comp = null;
 
     public Vertex(int i) {
         index = i;
