@@ -19,9 +19,10 @@ public class Main {
         Printer.print(prima);
         Graph bor = new Graph();
         bor.setVertexes(new ArrayList<>());
-        Boruvka.boruvka(graph, bor);
+        List<Edge> resBor = new ArrayList<>();
+        Boruvka.boruvka(graph, bor,resBor);
         System.out.println("Борувка");
-        Printer.print(bor);
+        Printer.print(resBor);
         System.out.println();
     }
 }

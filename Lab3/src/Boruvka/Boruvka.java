@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Boruvka {
-    public static long boruvka(Graph graph, Graph minTree) {
+    public static long boruvka(Graph graph, Graph minTree, List<Edge> result) {
         long timeout = System.currentTimeMillis();
         List<Vertex> tree = new ArrayList<>();
         for (int i = 0; i < graph.getVertexes().size(); i++) {
@@ -29,7 +29,12 @@ public class Boruvka {
                         }
                     }
                 }
-                tree.get(ind).getIncidentEdges().add(comp.minEdge);
+                if (!result.contains(comp.minEdge)) {
+                    result.add(comp.minEdge);
+                }
+                Edge edge = new Edge(comp.minEdge.getWeight(), tree.get(ind), tree.get(comp.minEdge.getEndVertex(graph.getVertexes().get(ind)).index));
+                tree.get(ind).getIncidentEdges().add(edge);
+                tree.get(comp.minEdge.getEndVertex(graph.getVertexes().get(ind)).index).getIncidentEdges().add(edge);
                 size++;
             }
         }
