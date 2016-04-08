@@ -17,6 +17,22 @@ public class Edge {
         return ((v1 == firstVertex && v2 == secondVertex) || (v2 == firstVertex && v1 == secondVertex));
     }
 
+    public Vertex getFirstVertex() {
+        return firstVertex;
+    }
+
+    public void setFirstVertex(Vertex firstVertex) {
+        this.firstVertex = firstVertex;
+    }
+
+    public Vertex getSecondVertex() {
+        return secondVertex;
+    }
+
+    public void setSecondVertex(Vertex secondVertex) {
+        this.secondVertex = secondVertex;
+    }
+
     public Edge(int weight, Vertex firstVertex, Vertex startVertex) {
         this.weight = weight;
         this.firstVertex = firstVertex;
