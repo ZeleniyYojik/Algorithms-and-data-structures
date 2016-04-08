@@ -1,5 +1,7 @@
 package GraphPack;
 
+import Boruvka.Comp;
+
 import java.util.List;
 
 public class Graph {
@@ -11,5 +13,9 @@ public class Graph {
 
     public void setVertexes(List<Vertex> vertexes) {
         this.vertexes = vertexes;
+    }
+
+    public static List<Comp> dfs(Graph minTree) {
+
     }
 }

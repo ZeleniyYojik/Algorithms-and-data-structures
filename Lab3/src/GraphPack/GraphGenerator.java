@@ -12,7 +12,7 @@ public class GraphGenerator {
         List<Vertex> notInGraph = new ArrayList<>();
 
         for (int i = 0; i < vertexesCount; i++) {
-            notInGraph.add(new Vertex());
+            notInGraph.add(new Vertex(i));
         }
 
         Vertex curr = notInGraph.get(random.nextInt(notInGraph.size()));
