@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GraphGenerator {
-    public Graph generateGraphForPrima(int vertexesCount, int edgesCount, int minWeight, int maxWeight) {
+    public Graph generateGraph(int vertexesCount, int edgesCount, int minWeight, int maxWeight) {
         Graph graph = new Graph();
         Random random = new Random(1000);
         List<Vertex> inGraph = new ArrayList<>();

@@ -15,8 +15,7 @@ public class Boruvka {
             tree.add(new Vertex(i));
         }
         minTree.setVertexes(tree);
-        int size = 0;
-        while (size < graph.getVertexes().size() - 1) {
+        while (result.size() < graph.getVertexes().size() - 1) {
             int ind = 0;
             List<Comp> comps = Graph.dfs(minTree);
             for (Comp comp : comps) {
@@ -35,7 +34,6 @@ public class Boruvka {
                 Edge edge = new Edge(comp.minEdge.getWeight(), tree.get(ind), tree.get(comp.minEdge.getEndVertex(graph.getVertexes().get(ind)).index));
                 tree.get(ind).getIncidentEdges().add(edge);
                 tree.get(comp.minEdge.getEndVertex(graph.getVertexes().get(ind)).index).getIncidentEdges().add(edge);
-                size++;
             }
         }
         return (System.currentTimeMillis() - timeout);
