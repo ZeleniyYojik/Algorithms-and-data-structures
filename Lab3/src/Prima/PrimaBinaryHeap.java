@@ -24,7 +24,7 @@ public class PrimaBinaryHeap {
             Vertex vertex = heap.extractMin();
             for (int i = 0; i < vertex.getIncidentEdges().size(); i++) {
                 Vertex next = vertex.getIncidentEdges().get(i).getEndVertex(vertex);
-                if (next.key > vertex.getIncidentEdges().get(i).getWeight()) {
+                if (next.key > vertex.getIncidentEdges().get(i).getWeight() && next.heapIndex < heap.getKeys().size()) {
                     removeFromTree(next, minTree);
                     next.key = vertex.getIncidentEdges().get(i).getWeight();
                     minTree.add(vertex.getIncidentEdges().get(i));
@@ -37,7 +37,7 @@ public class PrimaBinaryHeap {
 
     static void removeFromTree(Vertex vert, List<Edge> minTree) {
         for (Edge edge : vert.getIncidentEdges()) {
-            if (minTree.contains(edge) && edge.getWeight() == vert.key){
+            if (minTree.contains(edge) && edge.getWeight() == vert.key) {
                 minTree.remove(edge);
                 return;
             }
