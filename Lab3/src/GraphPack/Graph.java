@@ -33,9 +33,9 @@ public class Graph {
         if (vert.comp == null) {
             vert.comp = comp;
             comp.vertexes.add(vert);
-        }
-        for (Edge edge : vert.getIncidentEdges()) {
-            dfs(edge.getEndVertex(vert), comp);
+            for (Edge edge : vert.getIncidentEdges()) {
+                dfs(edge.getEndVertex(vert), comp);
+            }
         }
     }
 }

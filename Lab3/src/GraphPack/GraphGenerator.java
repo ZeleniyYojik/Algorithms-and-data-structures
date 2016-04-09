@@ -7,7 +7,7 @@ import java.util.Random;
 public class GraphGenerator {
     public Graph generateGraph(int vertexesCount, int edgesCount, int minWeight, int maxWeight) {
         Graph graph = new Graph();
-        Random random = new Random(1000);
+        Random random = new Random();
         List<Vertex> inGraph = new ArrayList<>();
         List<Vertex> notInGraph = new ArrayList<>();
 

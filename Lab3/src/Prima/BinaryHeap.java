@@ -9,7 +9,7 @@ public class BinaryHeap {
     private List<Vertex> keys = new ArrayList<>();
 
     public void siftDown(int i) {
-     while ((2 * i + 1) < (this.keys.size() - 1)) {
+        while ((2 * i + 1) < (this.keys.size() - 1)) {
             int right = 2 * i + 2;
             int left = 2 * i + 1;
             int cur = left;
@@ -48,7 +48,7 @@ public class BinaryHeap {
     void swap(int i, int j) {
         Vertex buff = this.keys.get(i);
         buff.heapIndex = j;
-        this.keys.get(j).heapIndex=i;
+        this.keys.get(j).heapIndex = i;
         this.keys.set(i, this.keys.get(j));
         this.keys.set(j, buff);
     }
