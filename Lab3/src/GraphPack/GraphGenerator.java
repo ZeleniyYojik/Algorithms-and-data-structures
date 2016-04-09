@@ -34,12 +34,12 @@ public class GraphGenerator {
             Vertex from = inGraph.get((random.nextInt(inGraph.size())));
             Vertex to = inGraph.get((random.nextInt(inGraph.size())));
             if (from != to) {
-                if (!from.duplicateEdge(from, to)) {
-                    Edge edge = new Edge(random.nextInt((maxWeight - minWeight) + minWeight), to, from);
-                    from.getIncidentEdges().add(edge);
-                    to.getIncidentEdges().add(edge);
-                    edgesCount--;
-                }
+//                if (!from.duplicateEdge(from, to)) {
+                Edge edge = new Edge(random.nextInt((maxWeight - minWeight) + minWeight), to, from);
+                from.getIncidentEdges().add(edge);
+                to.getIncidentEdges().add(edge);
+                edgesCount--;
+//                }
             }
         }
 

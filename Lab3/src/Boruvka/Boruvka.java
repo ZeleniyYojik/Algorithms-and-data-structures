@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Boruvka {
     public static long boruvka(Graph graph, Graph minTree, List<Edge> result) {
+        result.clear();
         long timeout = System.currentTimeMillis();
         minTree.setVertexes(new ArrayList<>());
         for (int i = 0; i < graph.getVertexes().size(); i++) {
