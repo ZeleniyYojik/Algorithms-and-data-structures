@@ -47,23 +47,26 @@ public class Main {
                 long timePrima = 0;
                 long timeBoruvka = 0;
                 List<Edge> resPrima = new ArrayList<>();
-//                List<Edge> resBoruvka = new ArrayList<>();
+                List<Edge> resBoruvka = new ArrayList<>();
                 for (int j = 0; j < 5; j++) {
+                    for (int k = 0; k < graph.getVertexes().size(); k++) {
+                        graph.getVertexes().get(k).index = k;
+                    }
                     timePrima += PrimaBinaryHeap.prima(graph, 0, resPrima);
-//                    for (int k = 0; k < graph.getVertexes().size(); k++) {
-//                        graph.getVertexes().get(k).index = k;
-//                    }
-//                    timeBoruvka += Boruvka.boruvka(graph, new Graph(), new ArrayList<>());
+                    for (int k = 0; k < graph.getVertexes().size(); k++) {
+                        graph.getVertexes().get(k).index = k;
+                    }
+                    timeBoruvka += Boruvka.boruvka(graph, new Graph(), resBoruvka);
                 }
-//                int sumPrima = 0;
-//                int sumBoruvka = 0;
-//                for (int j = 0; j < resBoruvka.size(); j++) {
-//                    sumPrima += resPrima.get(j).getWeight();
-//                    sumBoruvka += resBoruvka.get(j).getWeight();
-//                }
+                int sumPrima = 0;
+                int sumBoruvka = 0;
+                for (int j = 0; j < resBoruvka.size(); j++) {
+                    sumPrima += resPrima.get(j).getWeight();
+                    sumBoruvka += resBoruvka.get(j).getWeight();
+                }
                 timePrima /= 5;
                 timeBoruvka /= 5;
-                System.out.println(" Prima: " + timePrima + "ms" /*+ " W: " + sumPrima */ + "  Boruvka: " + timeBoruvka + "ms"/* + " W: " + sumBoruvka*/);
+                System.out.println(" Prima: " + timePrima + "ms" + " W: " + sumPrima + "  Boruvka: " + timeBoruvka + "ms" + " W: " + sumBoruvka);
                 sb.append(timePrima + ";" + timeBoruvka);
                 bw.write(sb.toString());
                 bw.newLine();
