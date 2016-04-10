@@ -31,7 +31,7 @@ public class Main {
 //        System.out.println();
 
         try (
-                OutputStream ous = new FileOutputStream("outputPrima0.csv");
+                OutputStream ous = new FileOutputStream("outputTest.csv");
                 OutputStreamWriter ouw = new OutputStreamWriter(ous, Charset.forName("UTF-8"));
                 BufferedWriter bw = new BufferedWriter(ouw)
         ) {
