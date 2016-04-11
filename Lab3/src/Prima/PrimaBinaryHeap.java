@@ -12,7 +12,7 @@ public class PrimaBinaryHeap {
     public static long prima(Graph graph, int s, List<Edge> minTree) {
         long timeout = System.currentTimeMillis();
         minTree.clear();
-        for (int i = 0; i < graph.getVertexes().size()-1; i++) {
+        for (int i = 0; i < graph.getVertexes().size(); i++) {
             minTree.add(null);
         }
         BinaryHeap heap = new BinaryHeap();

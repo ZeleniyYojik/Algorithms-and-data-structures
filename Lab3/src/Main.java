@@ -31,7 +31,7 @@ public class Main {
 //        System.out.println();
 
         try (
-                OutputStream ous = new FileOutputStream("outputTest.csv");
+                OutputStream ous = new FileOutputStream("output.csv");
                 OutputStreamWriter ouw = new OutputStreamWriter(ous, Charset.forName("UTF-8"));
                 BufferedWriter bw = new BufferedWriter(ouw)
         ) {
@@ -60,10 +60,10 @@ public class Main {
                 }
                 int sumPrima = 0;
                 int sumBoruvka = 0;
-                for (int j = 0; j < resBoruvka.size(); j++) {
-                    sumPrima += resPrima.get(j).getWeight();
-                    sumBoruvka += resBoruvka.get(j).getWeight();
-                }
+//                for (int j = 0; j < resBoruvka.size(); j++) {
+//                    sumPrima += resPrima.get(j).getWeight();
+//                    sumBoruvka += resBoruvka.get(j).getWeight();
+//                }
                 timePrima /= 5;
                 timeBoruvka /= 5;
                 System.out.println(" Prima: " + timePrima + "ms" + " W: " + sumPrima + "  Boruvka: " + timeBoruvka + "ms" + " W: " + sumBoruvka);
