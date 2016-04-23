@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class FordFulkerson {
     public static int ford_fulkerson(Vertex u, int Cmin, Graph graph) {
         if (u == graph.t) {
@@ -26,6 +29,24 @@ public class FordFulkerson {
             }
         }
         return 0;
+    }
+
+    public static List<Vertex> min_cut(Graph graph) {
+        List<Vertex> cut = new ArrayList<>();
+        cut.add(graph.s);
+        int i = -1;
+        while (i != cut.size() - 1) {
+            i++;
+            Vertex v = cut.get(i);
+            for (Edge e : v.edges) {
+                if (!cut.contains(e.to)) {
+                    if (e.f - e.c != 0) {
+                        cut.add(e.to);
+                    }
+                }
+            }
+        }
+        return cut;
     }
 
     static int min(int a, int b) {

@@ -1,3 +1,5 @@
+import java.util.List;
+
 //Lab4 Pashnin A.D. Variant 6
 public class Main {
     public static void main(String args[]) {
@@ -8,5 +10,7 @@ public class Main {
             d = FordFulkerson.ford_fulkerson(graph.vertices.get(0), Integer.MAX_VALUE, graph);
         } while (d != 0);
         Printer.print(graph);
+        List<Vertex> cut = FordFulkerson.min_cut(graph);
+        Printer.print(cut);
     }
 }
