@@ -5,13 +5,21 @@ public class FordFulkerson {
         }
         u.visited = true;
         for (Edge e : u.edges) {
-            Vertex v = e.getEndVert();
-            if (!v.visited && e.f < e.c) {
+            Vertex v = e.getEndVert(u);
+            boolean d = e.to == v;
+            if (!v.visited && ((d && e.f < e.c) || (!d && e.f > 0 && e.f < e.c))) {
                 int delta = ford_fulkerson(v, min(Cmin, e.c - e.f), graph);
                 if (delta > 0) {
-                    e.f += delta;
-                    if (e.backEdge != null) {
-                        e.backEdge.f -= delta;
+                    if (d) {
+                        e.f += delta;
+                        if (e.backEdge != null) {
+                            e.backEdge.f -= delta;
+                        }
+                    } else {
+                        e.f -= delta;
+                        if (e.backEdge != null) {
+                            e.backEdge.f += delta;
+                        }
                     }
                     return delta;
                 }

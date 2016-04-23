@@ -16,4 +16,8 @@ public class Edge {
     public Vertex getEndVert() {
         return to;
     }
+
+    public Vertex getEndVert(Vertex u) {
+        return u == from ? to : from;
+    }
 }
