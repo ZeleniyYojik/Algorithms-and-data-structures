@@ -108,7 +108,7 @@ public class Graph {
 //        E.edges.add(EF);
         //
         //Мой граф
-        Edge AB = new Edge(A, B, 14, "AB");
+        Edge AB = new Edge(A, B, 20, "AB");
         Edge AD = new Edge(A, D, 10, "AD");
         Edge AC = new Edge(A, C, 2, "AC");
         A.edges.add(AB);
@@ -122,8 +122,8 @@ public class Graph {
         C.edges.add(BC);
         B.edges.add(CB);
         C.edges.add(CB);
-        Edge BE = new Edge(B, E, 20, "BE");
-        Edge EB = new Edge(E, B, 20, "EB");
+        Edge BE = new Edge(B, E, 10, "BE");
+        Edge EB = new Edge(E, B, 10, "EB");
         BE.backEdge = EB;
         EB.backEdge = BE;
         B.edges.add(BE);

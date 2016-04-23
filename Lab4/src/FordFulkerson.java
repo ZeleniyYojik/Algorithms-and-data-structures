@@ -31,7 +31,7 @@ public class FordFulkerson {
         return 0;
     }
 
-    public static List<Vertex> min_cut(Graph graph) {
+    public static List<Vertex> min_cut_vertexes(Graph graph) {
         List<Vertex> cut = new ArrayList<>();
         cut.add(graph.s);
         int i = -1;
@@ -43,6 +43,19 @@ public class FordFulkerson {
             });
         }
         return cut;
+    }
+
+    public static List<Edge> min_cut_edges(Graph graph) {
+        List<Vertex> cut = min_cut_vertexes(graph);
+        List<Edge> ecut = new ArrayList<>();
+        for (Vertex v : cut) {
+            for (Edge e : v.edges) {
+                if (!cut.contains(e.to)) {
+                    ecut.add(e);
+                }
+            }
+        }
+        return ecut;
     }
 
     static int min(int a, int b) {
