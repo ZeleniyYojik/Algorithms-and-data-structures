@@ -13,10 +13,6 @@ public class Edge {
         this.name = name;
     }
 
-    public Vertex getEndVert() {
-        return to;
-    }
-
     public Vertex getEndVert(Vertex u) {
         return u == from ? to : from;
     }

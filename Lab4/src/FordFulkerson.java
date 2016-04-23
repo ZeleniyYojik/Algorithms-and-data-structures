@@ -38,13 +38,9 @@ public class FordFulkerson {
         while (i != cut.size() - 1) {
             i++;
             Vertex v = cut.get(i);
-            for (Edge e : v.edges) {
-                if (!cut.contains(e.to)) {
-                    if (e.f - e.c != 0) {
-                        cut.add(e.to);
-                    }
-                }
-            }
+            v.edges.stream().filter(e -> !cut.contains(e.to)).filter(e -> e.f - e.c != 0).forEach(e -> {
+                cut.add(e.to);
+            });
         }
         return cut;
     }
