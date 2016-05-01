@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 //Variant 4
 public class Main {
@@ -7,12 +9,12 @@ public class Main {
                 FileReader fileReader = new FileReader("PATH.IN");
                 FileWriter fileWriter = new FileWriter("PATH.OUT");
                 BufferedWriter writer = new BufferedWriter(fileWriter);
-                BufferedReader reader = new BufferedReader(fileReader);
+                BufferedReader reader = new BufferedReader(fileReader)
         ) {
             int n = Integer.parseInt(reader.readLine());
             Graph graph = new Graph(n);
             for (int i = 0; i < n; i++) {
-                graph.vertices[n] = new Vertex(n + 1);
+                graph.vertices[i] = new Vertex(i + 1);
             }
             int m = Integer.parseInt(reader.readLine());
             for (int i = 0; i < m; i++) {
@@ -27,6 +29,51 @@ public class Main {
             int a = Integer.parseInt(reader.readLine());
             int b = Integer.parseInt(reader.readLine());
             int c = Integer.parseInt(reader.readLine());
+            Vertex v_b = graph.vertices[b - 1];
+            Vertex v_c = graph.vertices[c - 1];
+            Dijkstra.dijkstra(graph, a - 1);
+            if (v_c.prev == null) {
+                writer.write("-1");
+                writer.newLine();
+                System.out.println(-1);
+                return;
+            }
+            List<Vertex> pathToC = new ArrayList<>();
+            int cnt = 0;
+            Vertex v = v_c;
+            do {
+                pathToC.add(v);
+                cnt++;
+                v.setEdgeVisited();
+                v = v.prev;
+            } while (v != null);
+            Dijkstra.dijkstra(graph, c - 1);
+            if (v_b.prev == null) {
+                writer.write("-1");
+                writer.newLine();
+                System.out.println(-1);
+                return;
+            }
+            List<Vertex> pathToB = new ArrayList<>();
+            v = v_b;
+            do {
+                pathToB.add(v);
+                cnt++;
+                v = v.prev;
+            } while (v.prev != null);
+            writer.write("" + cnt);
+            System.out.println(cnt);
+            writer.newLine();
+            for (int i = pathToC.size() - 1; i >= 0; i--) {
+                writer.write("" + pathToC.get(i).numb);
+                writer.newLine();
+                System.out.println(pathToC.get(i).numb);
+            }
+            for (int i = pathToB.size() - 1; i >= 0; i--) {
+                writer.write("" + pathToB.get(i).numb);
+                writer.newLine();
+                System.out.println(pathToB.get(i).numb);
+            }
         }
     }
 }
